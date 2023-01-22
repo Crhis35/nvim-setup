@@ -124,6 +124,19 @@ nvim_lsp.pyright.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.terraformls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.tf", "*.tfvars" },
+  callback = vim.lsp.buf.formatting_sync,
+})
+nvim_lsp.tflint.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
