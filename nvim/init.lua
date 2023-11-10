@@ -3,17 +3,14 @@ require('crhis.highlights')
 require('crhis.maps')
 require('crhis.plugins')
 
-local has = vim.fn.has
-local is_mac = has "macunix"
-local is_win = has "win32"
-local is_wsl = has "wsl"
+local os = vim.loop.os_uname().sysname
 
-if is_mac then
-	require('crhis.macos')
-end
-if is_win then
-	require('crhis.windows')
-end
-if is_wsl == 1 then
-	require('crhis.wsl')
+if os == "Darwin" then
+  require('crhis.macos')
+elseif os == "Linux" then
+  require('crhis.linux')
+elseif os == "Windows_NT" then
+  require('crhis.windows')
+else
+  error("Unknown OS")
 end

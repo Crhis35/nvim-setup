@@ -29,7 +29,7 @@ packer.startup(function(use)
 
   use { "mfussenegger/nvim-jdtls", ft = { "java" } }
 
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
+  use 'nvimdev/lspsaga.nvim' -- LSP UIs
   use 'L3MON4D3/LuaSnip'
   use {
     'nvim-treesitter/nvim-treesitter',
